@@ -1,0 +1,70 @@
+<div class="flex h-screen">
+  <!-- Sidebar -->
+  <div
+    [ngClass]="{
+      'w-20     ': isSidebarOpen,
+      'w-0': !isSidebarOpen,
+      'p-6': isSidebarOpen,
+      'p-0': !isSidebarOpen,
+      'mx-4': true,
+      'my-4': true,
+      'items-center' : true,
+      'border-t border-b border-gray-700': true,
+      'rounded-2xl': true,
+      'transition-all  duration-300': true
+    }"
+    class="bg-gray-800 text-white"
+  >
+    <ng-container *ngIf="isSidebarOpen">
+      <!-- <h2 class="text-2xl mb-6">Dashboard</h2> -->
+    </ng-container>
+    <button
+      (click)="toggleSidebar()"
+      class="mb-6 flex items-center justify-center "
+    >
+      <ion-icon
+        size="large"
+        name="menu-outline"
+        class="hover:text-gray-500"
+      ></ion-icon>
+      <ng-container *ngIf="isSidebarOpen">
+        <!-- <span class="ml-2">Toggle Sidebar</span> -->
+      </ng-container>
+    </button>
+    <ng-container *ngIf="isSidebarOpen">
+      <nav class=" items-center justify-center h-full">
+        <a href="#" class="block mb-2"
+          ><ion-icon name="grid-outline"></ion-icon
+        ></a>
+        <a href="#" class="block mb-2"
+          ><ion-icon name="build-outline"></ion-icon
+        ></a>
+        <a href="#" class="block mb-2"
+          ><ion-icon name="flash-outline"></ion-icon
+        ></a>
+      </nav>
+    </ng-container>
+  </div>
+
+  <!-- Content -->
+  <div class="flex-1">
+    <div class="p-6 rounded-lg shadow-md">
+      <div class="flex h-full max-h-full gap-5">
+        <div class="grow h-14 flex-auto">
+          <div class="grid grid-rows-2 grid-flow-col gap-2">
+            <div class="bg-green-400 rounded-lg p-5 h-auto">cloud</div>
+            <!-- ... -->
+            <div class="bg-gray-400 rounded-lg p-5 h-80">09</div>
+          </div>
+        </div>
+        <div class="grow h-14">
+          <div class="grid grid-rows-2 grid-flow-col gap-2">
+            <div class="bg-green-400 rounded-lg p-5 h-96">cloud</div>
+            <!-- ... -->
+            <div class="bg-white rounded-lg p-5 h-64">09</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

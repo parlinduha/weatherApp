@@ -6,10 +6,21 @@ import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { ContentComponent } from '../content/content.component';
 import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [NavbarComponent, SidebarComponent, ContentComponent],
+  declarations: [
+    NavbarComponent,
+    SidebarComponent,
+    ContentComponent,
+    DashboardComponent,
+  ],
   imports: [CommonModule, RouterModule, IonicModule, FormsModule],
-  exports: [NavbarComponent, SidebarComponent, ContentComponent],
+  exports: [
+    NavbarComponent,
+    SidebarComponent,
+    ContentComponent,
+    DashboardComponent,
+  ],
 })
 export class SharedModule {}

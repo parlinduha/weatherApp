@@ -1,0 +1,42 @@
+.sidebar {
+  width: 70px;
+  height: 100vh;
+  background-color: #1f2f36;
+  color: #fff;
+  float: left;
+  padding: 20px;
+  transition: width 0.3s ease;
+  border-radius: 20px;
+  position: relative;
+
+  @media (min-width: 768px) {
+    padding: 20px 10px; // Ubah padding sesuai kebutuhan
+  }
+}
+
+.header {
+  background-color: #111015;
+  padding: 20px;
+  width: calc(100% - 70px);
+  float: left;
+
+  @media (min-width: 768px) {
+    width: calc(100% - 70px);
+  }
+}
+
+.content {
+  width: calc(100% - 70px);
+  float: left;
+  padding: 20px;
+
+  @media (min-width: 768px) {
+    width: calc(100% - 70px);
+  }
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}

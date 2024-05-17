@@ -11,8 +11,13 @@
     <li>
       <ion-icon class="ion-icon" name="power"></ion-icon>
     </li>
-    <li class="mode-toggle">
-      <ion-toggle mode="ios" [checked]="true"></ion-toggle>
-    </li>
+    <!-- <li class="mode-toggle">
+      <ion-toggle
+        mode="ios"
+        [checked]="true"
+        [(ngModel)]="themeToggle"
+        (ionChange)="toggleChange($event)"
+      ></ion-toggle>
+    </li> -->
   </ul>
 </div>
