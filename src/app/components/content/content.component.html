@@ -2,15 +2,9 @@
   <div class="card card-blue">
     <div class="row">
       <div class="col left">
-        <div class="row">
+        <div class="row location-row">
           <div class="pin">
-            <ion-icon
-              class="location"
-              mode="ios"
-              size="large"
-              name="location"
-              mode="ios"
-            ></ion-icon>
+            <ion-icon class="location" mode="ios" size="large" name="location"></ion-icon>
           </div>
           <div class="location">
             <span>Jakarta</span>
@@ -18,11 +12,7 @@
         </div>
       </div>
       <div class="col right">
-        <ion-segment
-          mode="ios"
-          value="celcius"
-          (ionChange)="switchTemperature($event)"
-        >
+        <ion-segment mode="ios" value="celcius" (ionChange)="switchTemperature($event)">
           <ion-segment-button value="fahrenheit">
             <ion-label class="fahrenheit">F</ion-label>
           </ion-segment-button>
@@ -32,7 +22,6 @@
         </ion-segment>
       </div>
     </div>
-
     <div class="row">
       <div class="col left">
         <div class="temp">
@@ -48,13 +37,7 @@
       <div class="col right">
         <div class="temp-cloud">
           <div class="cloud-sun-icon">
-            <!-- <ion-icon class="cloud" name="cloud"></ion-icon> -->
-            <img
-              src="assets/icon/cloud.png"
-              class="cloud"
-              width="200"
-              height="200"
-            />
+            <img src="assets/icon/cloud.png" class="cloud" alt="cloud icon" />
           </div>
           <h1>Cloudy</h1>
           <span>Feels like 26&deg;</span>
@@ -62,6 +45,7 @@
       </div>
     </div>
   </div>
+
   <div class="card card-red">
     <h3>Today Highlight</h3>
     <div class="row">
@@ -74,19 +58,70 @@
     </div>
   </div>
 </div>
+
 <div class="card-container">
   <div class="card card-green">
-    <h3>Data Kiri</h3>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
-      Praesent libero.
-    </p>
-  </div>
-  <div class="card card-yellow">
-    <h3>Data Kanan</h3>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
-      Praesent libero.
-    </p>
+    <div class="card-content">
+      <div class="col left">
+        <div class="card cardcustomm">
+          <div class="card-body">
+            <div class="forecast">
+              <div class="forecast-item">
+                <span>1 PM</span>
+                <img src="assets/icon/cloud.png" alt="Weather Icon" />
+                <span>20&deg;</span>
+              </div>
+              <div class="forecast-item">
+                <span>1 PM</span>
+                <img src="assets/icon/cloud.png" alt="Weather Icon" />
+                <span>20&deg;</span>
+              </div>
+              <div class="forecast-item">
+                <span>1 PM</span>
+                <img src="assets/icon/cloud.png" alt="Weather Icon" />
+                <span>20&deg;</span>
+              </div>
+              <div class="forecast-item">
+                <span>1 PM</span>
+                <img src="assets/icon/cloud.png" alt="Weather Icon" />
+                <span>20&deg;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Konten bottom card -->
+        <div class="bottom-card">
+          <div class="bottom-card-content">
+            <div class="thunderstorm">
+              <img src="assets/icon/cloud.png" alt="Thunderstorm Icon" />
+              <span>14&deg;</span>
+            </div>
+            <div class="weather-info">
+              <p>Tomorrow</p>
+              <p>Thunder storm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col right">
+        <!-- Konten card status dipindahkan ke sini -->
+        <div class="card cardstatus">
+          <div class="time-box sunrise">
+            <h2>Sunrise</h2>
+            <p>6:45 AM</p>
+          </div>
+          <div class="time-box sunset">
+            <h2>Sunset</h2>
+            <p>5:09 PM</p>
+          </div>
+          <div class="time-box length-of-day">
+            <h2>Length of<br>day</h2>
+            <p>10 h 23 m</p>
+          </div>          
+        </div>
+      </div>
+    </div>
   </div>
 </div>
