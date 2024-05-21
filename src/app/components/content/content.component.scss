@@ -175,6 +175,16 @@
   }
 }
 
+.chart-container {
+  width: 300px; /* Ganti dengan lebar yang diinginkan */
+  height: 200px; /* Ganti dengan tinggi yang diinginkan */
+
+  canvas {
+    width: 50% !important;
+    height: 50% !important;
+  }
+}
+
 .row {
   display: flex;
   justify-content: space-between;
