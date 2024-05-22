@@ -1,42 +1,30 @@
-.sidebar {
-  width: 70px;
-  height: 100vh;
-  background-color: #1f2f36;
-  color: #fff;
-  float: left;
-  padding: 20px;
-  transition: width 0.3s ease;
-  border-radius: 20px;
+input:checked {
+  background-color: #2f2f2f; /* bg-green-500 */
+}
+
+input:checked ~ span:last-child {
+  --tw-translate-x: 1.75rem; /* translate-x-7 */
+}
+
+.chart-container {
   position: relative;
+  height: 2px; // Adjust this value as per your requirement
+}
 
-  @media (min-width: 768px) {
-    padding: 20px 10px; // Ubah padding sesuai kebutuhan
+.chart {
+  canvas {
+    display: block;
+    max-width: 100% !important;
+    height: auto;
   }
 }
 
-.header {
-  background-color: #111015;
-  padding: 20px;
-  width: calc(100% - 70px);
-  float: left;
-
-  @media (min-width: 768px) {
-    width: calc(100% - 70px);
-  }
+.stories {
+  scrollbar-width: none;
 }
 
-.content {
-  width: calc(100% - 70px);
-  float: left;
-  padding: 20px;
 
-  @media (min-width: 768px) {
-    width: calc(100% - 70px);
-  }
+ion-icon {
+  cursor: pointer;
 }
 
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}

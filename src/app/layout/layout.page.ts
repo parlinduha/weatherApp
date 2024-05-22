@@ -6,12 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layout.page.scss'],
 })
 export class LayoutPage implements OnInit {
-  isSidebarOpen = true;
+  temperatureUnit = 'C';
+
   constructor() {}
 
   ngOnInit() {}
 
-  toggleSidebar() {
-    this.isSidebarOpen = !this.isSidebarOpen;
+  toggleSidebar() {}
+  convertCelsiusToFahrenheit(celsius: number) {
+    return (celsius * 9) / 5 + 32;
+  }
+
+  toggleTemperatureUnit() {
+    this.temperatureUnit = this.temperatureUnit === 'C' ? 'F' : 'C';
   }
 }
