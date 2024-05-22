@@ -36,7 +36,7 @@ export class StormChartComponent implements OnInit {
               'rgba(255, 159, 64, 1)',
             ],
             borderWidth: 1,
-            tension: 0.6,
+            tension: 0.9,
           },
         ],
       },
@@ -44,6 +44,14 @@ export class StormChartComponent implements OnInit {
         responsive: true,
         plugins: {
           legend: {
+            display: false,
+          },
+        },
+        scales: {
+          x: {
+            display: false,
+          },
+          y: {
             display: false,
           },
         },

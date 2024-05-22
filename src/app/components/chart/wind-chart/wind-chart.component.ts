@@ -40,9 +40,16 @@ export class WindChartComponent implements OnInit {
         ],
       },
       options: {
-        responsive: true,
         plugins: {
           legend: {
+            display: false,
+          },
+        },
+        scales: {
+          x: {
+            display: false,
+          },
+          y: {
             display: false,
           },
         },

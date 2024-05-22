@@ -1,4 +1,4 @@
-<div class="flex h-[100%] py-4">
+<div class="flex h-[100%] bg-cyan-400">
   <div
     [ngClass]="{
       'w-20': isSidebarOpen,
@@ -15,7 +15,7 @@
     (click)="isSidebarOpen = !isSidebarOpen"
     (mouseup)="isGridIconClicked = false"
   >
-    <button>
+    <button class="mr-2">
       <ion-icon
         *ngIf="!isSidebarOpen"
         size="large"
