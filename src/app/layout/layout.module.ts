@@ -13,6 +13,7 @@ import { ChartBarComponent } from '../components/chart/chart-bar/chart-bar.compo
 import { GaugeChartComponent } from '../components/chart/gauge-chart/gauge-chart.component';
 import { WindChartComponent } from '../components/chart/wind-chart/wind-chart.component';
 import { StormChartComponent } from '../components/chart/storm-chart/storm-chart.component';
+import { ProgressCircleComponent } from '../components/chart/progress-circle/progress-circle.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { StormChartComponent } from '../components/chart/storm-chart/storm-chart
     ChartBarComponent,
     GaugeChartComponent,
     WindChartComponent,
-    StormChartComponent
+    StormChartComponent,
+    ProgressCircleComponent,
   ],
 })
 export class LayoutPageModule {}

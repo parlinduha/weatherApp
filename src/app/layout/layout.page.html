@@ -3,7 +3,7 @@
   <app-sidebar></app-sidebar>
   <!-- end sidebar -->
   <!-- Content -->
-  <div class="flex-1 p-4 bg-amber-300">
+  <div class="flex-1 p-4">
     <div class="flex gap-5">
       <div class="grow w-[40%] h-auto flex-auto">
         <div class="grid grid-cols-1 gap-2">
@@ -248,7 +248,8 @@
                   UV Index
                 </h3>
                 <div class="justify-center">
-                  <app-gauge-chart></app-gauge-chart>
+                  <!-- <app-gauge-chart></app-gauge-chart> -->
+                  <app-progress-circle></app-progress-circle>
                 </div>
               </div>
 
@@ -268,8 +269,14 @@
                 </div>
                 <app-wind-chart></app-wind-chart>
                 <div class="flex w-full justify-between gap-2">
-                  <p class="text-gray-100">6.55 m/s</p>
-                  <p class="text-gray-100">4:00 PM</p>
+                  <div class="flex gap-2 items-center">
+                    <p class="text-gray-100">6.55</p>
+                    <span class="text-xs text-slate-500">m/s</span>
+                  </div>
+                  <div class="flex gap-2 items-center">
+                    <p class="text-gray-100">4:00</p>
+                    <span class="text-xs text-slate-500">PM</span>
+                  </div>
                 </div>
               </div>
 
@@ -283,12 +290,12 @@
                 <div class="flex items-center justify-center">
                   <img
                     src="assets/images/humadity.png"
-                    class="w-[90px] h-[80px] items-center"
+                    class="w-[220px] h-[100px] items-center"
                     alt=""
                     srcset=""
                   />
                 </div>
-                <div class="flex grid-cols-2 justify-between">
+                <div class="flex grid-cols-1 justify-between">
                   <div class="flex items-center gap-1">
                     <p class="text-gray-100 text-md">45</p>
                     <span class="text-xs text-slate-500">%</span>
@@ -319,7 +326,7 @@
                 </div>
                 <div class="flex justify-end">
                   <img
-                    src="assets/images/humadity.png"
+                    src="assets/weather-icon/wind-2.png"
                     class="w-[20px] h-[20px] items-center"
                     alt=""
                   />
@@ -333,7 +340,7 @@
                 </div>
                 <div class="flex justify-end">
                   <img
-                    src="assets/images/humadity.png"
+                    src="assets/weather-icon/cloudy-5.png"
                     class="w-[20px] h-[20px] items-center"
                     alt=""
                   />
@@ -347,7 +354,7 @@
                 </div>
                 <div class="flex justify-end">
                   <img
-                    src="assets/images/humadity.png"
+                    src="assets/weather-icon/cloudy-4.png"
                     class="w-[20px] h-[20px] items-center"
                     alt=""
                   />
@@ -361,7 +368,7 @@
                 </div>
                 <div class="flex justify-end">
                   <img
-                    src="assets/images/humadity.png"
+                    src="assets/weather-icon/cloudy-6.png"
                     class="w-[20px] h-[20px] items-center"
                     alt=""
                   />
