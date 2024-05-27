@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js/auto';
+import { Chart, ChartConfiguration, ChartData, registerables } from 'chart.js';
 
 @Component({
   selector: 'app-gauge-chart',
@@ -7,46 +7,50 @@ import { Chart } from 'chart.js/auto';
   styleUrls: ['./gauge-chart.component.scss'],
 })
 export class GaugeChartComponent implements OnInit {
-  public chart!: Chart;
-  constructor() {}
+  public chart!: Chart<'doughnut'>;
+
+  constructor() {
+    Chart.register(...registerables);
+  }
 
   ngOnInit() {
-    this.chart = new Chart('canvas2', {
-      type: 'bar',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [
-          {
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)',
-            ],
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            display: false,
-          },
+    this.createChart();
+  }
+
+  createChart() {
+    const canvas = document.getElementById('canvas2') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d');
+
+    const data: ChartData<'doughnut'> = {
+      labels: ['Chance of Rain', ''],
+      datasets: [
+        {
+          data: [70, 30], // Misal, 70% chance of rain
+          backgroundColor: [
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(200, 200, 200, 0.5)',
+          ],
+          borderColor: ['rgba(54, 162, 235, 1)', 'rgba(200, 200, 200, 1)'],
+          borderWidth: 1,
+        },
+      ],
+    };
+
+    const options: ChartConfiguration<'doughnut'>['options'] = {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '70%', // Membuat gauge chart
+      plugins: {
+        legend: {
+          display: false,
         },
       },
+    };
+
+    this.chart = new Chart(ctx!, {
+      type: 'doughnut',
+      data: data,
+      options: options,
     });
   }
 }

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js/auto';
-// import * as dataJson from './data.json';
+import {
+  Chart,
+  ChartConfiguration,
+  ChartData,
+  registerables,
+} from 'chart.js/auto';
 
 @Component({
   selector: 'app-chart-bar',
@@ -8,54 +12,77 @@ import { Chart } from 'chart.js/auto';
   styleUrls: ['./chart-bar.component.scss'],
 })
 export class ChartBarComponent implements OnInit {
-  public chart!: Chart;
-  constructor() {}
+  public chart!: Chart<'bar'>;
+
+  constructor() {
+    Chart.register(...registerables);
+  }
 
   ngOnInit() {
-    this.chart = new Chart('canvas', {
-      type: 'line',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [
-          {
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)',
-            ],
-            borderWidth: 1,
-            tension: 0.6,
-            fill: true,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            display: false,
-          },
+    this.createChart();
+  }
+
+  createChart() {
+    const canvas = document.getElementById('canvas') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d');
+
+    const dataValues = [8, 10, 12, 15, 14, 13, 11]; // Data kecepatan angin pada jam-jam tertentu
+    const topThreeIndices = dataValues
+      .map((value, index) => ({ value, index }))
+      .sort((a, b) => b.value - a.value)
+      .slice(0, 3)
+      .map((item) => item.index);
+
+    const data: ChartData<'bar'> = {
+      labels: ['03AM', '06AM', '09AM', '12PM', '03PM', '06PM', '09PM'],
+      datasets: [
+        {
+          label: 'Wind Status (km/h)',
+          data: dataValues,
+          backgroundColor: dataValues.map((_, index) =>
+            topThreeIndices.includes(index)
+              ? 'rgb(15, 255, 204)'
+              : 'rgb(129, 143, 155)'
+          ),
+          borderColor: dataValues.map((_, index) =>
+            topThreeIndices.includes(index)
+              ? 'rgb(15, 255, 204)'
+              : 'rgb(129, 143, 155)'
+          ),
+          borderWidth: 1,
+          borderRadius: 5,
+          barPercentage: 0.5,
+          barThickness: 6,
+          maxBarThickness: 8,
+          minBarLength: 2,
         },
-        scales: {
-          x: {
-            suggestedMin: 10,
-            suggestedMax: 10,
-          },
+      ],
+    };
+
+    const options: ChartConfiguration<'bar'>['options'] = {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
         },
       },
+      scales: {
+        x: {
+          beginAtZero: true,
+          display: false,
+        },
+        y: {
+          beginAtZero: true,
+          display: false,
+          offset: true,
+        },
+      },
+    };
+
+    this.chart = new Chart(ctx!, {
+      type: 'bar',
+      data: data,
+      options: options,
     });
   }
 }

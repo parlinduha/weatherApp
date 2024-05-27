@@ -1,11 +1,14 @@
-<div class="progress-main-all">
-  <div class="progressdiv" data-percent="3" total-data="10" offuse-data="2">
-    <svg class="progress" width="200" height="200" viewport="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg">
-      <path class="grey" d="M 45 156 A 80 80 124 1 1 137 155" fill="none" stroke-dasharray="404" stroke-dashoffset="0"/>
-      <path class="grey-path-2" d="M 45 156 A 80 80 124 1 1 137 155" fill="none" stroke-dasharray="404" stroke-dashoffset="0"/>
-      <path class="offline" fill="transparent" stroke-dasharray="404.5" stroke-dashoffset="404" d="M 45 156 A 80 80 124 1 1 137 155"/>
-      <path class="online" fill="transparent" stroke-dasharray="404.5" stroke-dashoffset="404" d="M 45 156 A 80 80 124 1 1 137 155"/>
-      <path class="white1" fill="transparent" stroke-dasharray="0 408" stroke-dashoffset="404" d="M 45 156 A 80 80 124 1 1 137 155"/>
-    </svg>
+<div class="flex flex-col items-center mt-8">
+  <div class="w-full rounded-full h-2.5 bg-gray-200">
+    <div
+      [ngClass]="{
+        'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-2.5 rounded-full': true,
+        'w-1/4': uvIndexValue === 25,
+        'w-1/2': uvIndexValue === 50,
+        'w-3/4': uvIndexValue === 75,
+        'w-full': uvIndexValue === 100
+      }"
+    ></div>
   </div>
+  <h5 class="text-slate-100 mt-2">{{ uvIndex }}/10</h5>
 </div>

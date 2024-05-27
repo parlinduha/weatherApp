@@ -16,28 +16,28 @@
                   name="location-outline"
                   class="text-black text-lg p-1"
                 ></ion-icon>
-                <h2 class="text-black text-xs">New York</h2>
+                <h2 class="text-black text-xs">
+                  {{ latitude }}, {{ longitude }}
+                </h2>
               </div>
               <div class="flex flex-col items-end">
                 <label
                   class="flex items-center relative w-max cursor-pointer select-none"
                 >
                   <input
-                    [checked]="temperatureUnit === 'F'"
-                    (click)="toggleTemperatureUnit()"
                     type="checkbox"
                     class="appearance-none transition-colors cursor-pointer w-14 h-6 rounded-full focus:bg-[#2f2f2f] bg-[#2f2f2f]"
+                    [checked]="temperatureUnit === 'F'"
+                    (click)="toggleTemperatureUnit()"
                   />
                   <span
                     class="absolute font-medium text-xs uppercase right-3 text-white"
+                    >C</span
                   >
-                    C
-                  </span>
                   <span
                     class="absolute font-medium text-xs uppercase right-8 text-white"
+                    >F</span
                   >
-                    F
-                  </span>
                   <span
                     class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200"
                   ></span>
@@ -46,40 +46,40 @@
             </div>
 
             <div class="flex justify-between mt-10">
-              <div class=" ">
-                <p class="text-white font-bold text-4xl">Thusday</p>
-                <p class="text-white text-sm mt-10">24 Dec 2023</p>
+              <div>
+                <p class="text-white font-bold text-4xl">{{ currentDay }}</p>
+                <p class="text-white text-sm mt-10">{{ currentDate }}</p>
                 <h1 class="text-white text-5xl mt-10 font-bold">
-                  {{ temperatureUnit === 'C' ? '26°C' : '78.8°F' }}
+                  {{ getFeelsLikeTemperature() }}
                 </h1>
-                <div class="flex items-center gap-4">
+                <div class="flex items-center gap-4 mt-4">
                   <p class="text-white text-sm">
-                    Hight : {{ temperatureUnit === 'C' ? '27°C' : '80.6°F' }}
+                    High: {{ temperatureUnit === 'C' ? '27°C' : '80.6°F' }}
                   </p>
                   <p class="text-white text-sm">
-                    Low : {{ temperatureUnit === 'C' ? '10°C' : '50°F' }}
+                    Low: {{ temperatureUnit === 'C' ? '10°C' : '50°F' }}
                   </p>
                 </div>
               </div>
               <div>
-                <div class="flex flex-col">
+                <div class="flex flex-col items-end">
                   <img
                     src="assets/icon/cloud.png"
                     class="w-48"
-                    alt=""
+                    alt="Cloud icon"
                     srcset=""
                   />
                   <div class="mt-20">
                     <p class="flex justify-end text-white text-sm">Cloudy</p>
                     <p class="flex justify-end text-white text-sm">
-                      Feels like {{ temperatureUnit === 'C' ? '26°C' : '78.8°F'
-                      }}
+                      Feels like {{ getFeelsLikeTemperature() }}
                     </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
           <!-- ... -->
           <div class="bg-[#1e1e1e] rounded-3xl p-3 h-[40vh]">
             <div>
@@ -236,8 +236,8 @@
                 <h3 class="text-gray-100 text-xs font-semibold">
                   Chance of Rain
                 </h3>
-                <div class="justify-center">
-                  <app-chart-bar class=""></app-chart-bar>
+                <div class="w-full">
+                  <app-gauge-chart></app-gauge-chart>
                 </div>
               </div>
 
@@ -247,8 +247,7 @@
                 <h3 class="text-gray-100 text-xs font-semibold mt-2">
                   UV Index
                 </h3>
-                <div class="justify-center">
-                  <!-- <app-gauge-chart></app-gauge-chart> -->
+                <div class="w-full">
                   <app-progress-circle></app-progress-circle>
                 </div>
               </div>
@@ -267,11 +266,12 @@
                     Wind Status
                   </h3>
                 </div>
-                <app-wind-chart></app-wind-chart>
+                <div class="w-full">
+                  <app-chart-bar></app-chart-bar>
+                </div>
                 <div class="flex w-full justify-between gap-2">
                   <div class="flex gap-2 items-center">
-                    <p class="text-gray-100">6.55</p>
-                    <span class="text-xs text-slate-500">m/s</span>
+                    <p class="text-gray-100">{{ wind }}</p>
                   </div>
                   <div class="flex gap-2 items-center">
                     <p class="text-gray-100">4:00</p>
@@ -287,18 +287,19 @@
                   <ion-icon name="water-sharp"></ion-icon>
                   <h3 class="text-gray-100 text-xs font-semibold">Humidity</h3>
                 </div>
-                <div class="flex items-center justify-center">
-                  <img
-                    src="assets/images/humadity.png"
-                    class="w-[220px] h-[100px] items-center"
-                    alt=""
-                    srcset=""
-                  />
+                <div class="w-full">
+                  <div class="w-full h-full">
+                    <img
+                      src="assets/images/humadity.png"
+                      class="w-[200px] h-[80px] items-center"
+                      alt=""
+                      srcset=""
+                    />
+                  </div>
                 </div>
                 <div class="flex grid-cols-1 justify-between">
                   <div class="flex items-center gap-1">
-                    <p class="text-gray-100 text-md">45</p>
-                    <span class="text-xs text-slate-500">%</span>
+                    <p class="text-gray-100 text-md">{{ humidity }}</p>
                   </div>
                   <div class="text-gray-100">
                     <p class="text-[#2d748b] text-xs">Status</p>
@@ -313,6 +314,7 @@
             <div class="flex justify-between items-center text-white">
               <div class="text-lg">Other Cities</div>
               <div
+                (click)="showLink()"
                 class="bg-[#2e2e2e] rounded-full p-2 items-center text-xs antialiased hover:bg-gray-400 cursor-pointer"
               >
                 Show All
