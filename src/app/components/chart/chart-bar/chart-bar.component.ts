@@ -26,7 +26,7 @@ export class ChartBarComponent implements OnInit {
     const canvas = document.getElementById('canvas') as HTMLCanvasElement;
     const ctx = canvas.getContext('2d');
 
-    const dataValues = [8, 10, 12, 15, 14, 13, 11]; // Data kecepatan angin pada jam-jam tertentu
+    const dataValues = [2, 5, 8, 6, 3, 4, 7]; // Data UV Index pada jam-jam tertentu
     const topThreeIndices = dataValues
       .map((value, index) => ({ value, index }))
       .sort((a, b) => b.value - a.value)
@@ -37,17 +37,17 @@ export class ChartBarComponent implements OnInit {
       labels: ['03AM', '06AM', '09AM', '12PM', '03PM', '06PM', '09PM'],
       datasets: [
         {
-          label: 'Wind Status (km/h)',
+          label: 'UV Index',
           data: dataValues,
           backgroundColor: dataValues.map((_, index) =>
             topThreeIndices.includes(index)
-              ? 'rgb(15, 255, 204)'
-              : 'rgb(129, 143, 155)'
+              ? 'rgb(255, 99, 132)'
+              : 'rgb(75, 192, 192)'
           ),
           borderColor: dataValues.map((_, index) =>
             topThreeIndices.includes(index)
-              ? 'rgb(15, 255, 204)'
-              : 'rgb(129, 143, 155)'
+              ? 'rgb(255, 99, 132)'
+              : 'rgb(75, 192, 192)'
           ),
           borderWidth: 1,
           borderRadius: 5,
@@ -69,11 +69,11 @@ export class ChartBarComponent implements OnInit {
       scales: {
         x: {
           beginAtZero: true,
-          display: false,
+          display: true,
         },
         y: {
           beginAtZero: true,
-          display: false,
+          display: true,
           offset: true,
         },
       },

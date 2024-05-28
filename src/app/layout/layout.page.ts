@@ -26,6 +26,8 @@ export class LayoutPage implements OnInit {
   currentDate: string = '';
   currentDay: string = '';
   humidity: string = '';
+  dewPointValue: string = '';
+  dewPointUnit: string = '';
   wind: string = '';
   rain: string = '';
   uv: string = '';
@@ -60,6 +62,14 @@ export class LayoutPage implements OnInit {
         );
         if (humidityData) {
           this.humidity = humidityData.value;
+          console.log('Humidity data', this.humidity);
+        }
+        const dewPointData = this.data.find(
+          (item) => item.name === 'Dew Point'
+        );
+        if (dewPointData) {
+          this.dewPointValue = dewPointData.value;
+          this.dewPointUnit = dewPointData.unit!;
           console.log('Humidity data', this.humidity);
         }
         // Find additional data

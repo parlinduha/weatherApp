@@ -224,13 +224,14 @@
           </div>
         </div>
       </div>
+      <!-- center -->
       <div class="grow w-[30%]">
         <div class="grid grid-rows-1 flex-auto h-full">
           <div class="rounded-2xl p-1">
             <!-- <h5 class="text-white mb-3">Today Highlight</h5> -->
             <div class="grid grid-cols-1 gap-4">
               <div
-                class="bg-[#1e1e1e] card h-[25vh] w-auto rounded-3xl px-3 py-2"
+                class="bg-[#1e1e1e] card h-[30vh] w-auto rounded-3xl px-3 py-2"
               >
                 <h3 class="text-gray-100 text-xl font-semibold">
                   Chance of Rain
@@ -246,8 +247,10 @@
                 <h3 class="text-gray-100 text-xl font-semibold mt-2">
                   UV Index
                 </h3>
-                <div class="w-full h-full">
-                  <app-progress-circle></app-progress-circle>
+                <div class="w-full h-full flex justify-center items-center">
+                  <!-- <app-progress-circle></app-progress-circle> -->
+                  <!-- <app-chart-bar></app-chart-bar> -->
+                  <app-uv-index></app-uv-index>
                 </div>
               </div>
 
@@ -280,13 +283,13 @@
               </div> -->
 
               <div
-                class="bg-[#1e1e1e] card rounded-3xl px-3 py-2 h-[35vh] w-auto flex flex-col"
+                class="bg-[#1e1e1e] card rounded-3xl px-3 py-2 h-[20vh] w-auto flex flex-col"
               >
                 <div class="flex">
                   <!-- <ion-icon name="water-sharp"></ion-icon> -->
                   <h3 class="text-gray-100 text-xl font-semibold">Humidity</h3>
                 </div>
-                <div
+                <!-- <div
                   class="grid items-center justify-center justify-items-center"
                 >
                   <img
@@ -295,14 +298,35 @@
                     alt=""
                     srcset=""
                   />
+                </div> -->
+                <div class="flex flex-cols-1 justify-between mt[-100px]">
+                  <div class="flex items-center gap-1">
+                    <p class="text-gray-100 text-md">{{ humidity }}</p>
+                  </div>
+                  <div class="text-gray-100">
+                    <p class="text-[#2d748b] text-xl">dew point is is</p>
+                    <p class="text-xl">
+                      {{ dewPointValue }} {{ dewPointUnit }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-[#1e1e1e] card rounded-3xl px-3 py-2 h-[20vh] w-auto flex flex-col"
+              >
+                <div class="flex">
+                  <!-- <ion-icon name="water-sharp"></ion-icon> -->
+                  <h3 class="text-gray-100 text-xl font-semibold">Pressure</h3>
                 </div>
                 <div class="flex flex-cols-1 justify-between mt[-100px]">
                   <div class="flex items-center gap-1">
                     <p class="text-gray-100 text-md">{{ humidity }}</p>
                   </div>
                   <div class="text-gray-100">
-                    <p class="text-[#2d748b] text-xl">Status</p>
-                    <p class="text-xl">Good Quality</p>
+                    <p class="text-[#2d748b] text-xl">dew point is is</p>
+                    <p class="text-xl">
+                      {{ dewPointValue }} {{ dewPointUnit }}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -380,50 +404,22 @@
           </div> -->
         </div>
       </div>
+      <!-- end center -->
+      <!-- right -->
       <div class="grow w-[30%]">
         <div class="grid grid-rows-1 flex-auto h-full">
           <div class="rounded-2xl p-2">
             <div class="grid grid-cols-1 gap-4">
               <div
-                class="bg-[#1e1e1e] card h-[25vh] w-auto rounded-3xl px-3 py-2"
-              >
-                <h3 class="text-gray-100 text-xl font-semibold">
-                  Chance of Rain
-                </h3>
-                <div class="w-full">
-                  <app-gauge-chart></app-gauge-chart>
-                </div>
-              </div>
-
-              <div
-                class="bg-[#1e1e1e] card h-[20vh] w-auto rounded-3xl px-3 flex flex-col items-start"
+                class="bg-[#1e1e1e] card h-[50vh] w-auto rounded-3xl px-3 flex flex-col items-start"
               >
                 <h3 class="text-gray-100 text-xl font-semibold mt-2">
-                  UV Index
+                  Wind Status
                 </h3>
-                <div class="w-full h-full">
-                  <app-progress-circle></app-progress-circle>
+                <div class="w-full h-full flex justify-center items-center">
+                  <app-compas></app-compas>
                 </div>
-              </div>
-
-              <div
-                class="bg-[#1e1e1e] h-[20vh] card w-auto rounded-3xl px-3 py-2 flex max-w-xs flex-col items-start"
-              >
-                <div class="flex gap-2">
-                  <img
-                    src="assets/weather-icon/wind.png"
-                    alt=""
-                    srcset=""
-                    class="w-[20px] h-[20px]"
-                  />
-                  <h3 class="text-gray-100 text-xs font-semibold">
-                    Wind Status
-                  </h3>
-                </div>
-                <div class="w-full">
-                  <app-chart-bar></app-chart-bar>
-                </div>
-                <div class="flex w-full justify-between gap-2">
+                <div class="flex w-full justify-between gap-2 mt-[-100px]">
                   <div class="flex gap-2 items-center">
                     <p class="text-gray-100">{{ wind }}</p>
                   </div>
@@ -433,6 +429,60 @@
                   </div>
                 </div>
               </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div
+                  class="bg-[#1e1e1e] card h-[20vh] w-auto rounded-3xl px-3 py-2"
+                >
+                  <h3 class="text-gray-100 text-xs font-semibold">
+                    Wind Speed
+                  </h3>
+                  <div
+                    class="w-full h-full flex flex-col items-center justify-center"
+                  >
+                    <!-- <app-progress-circle></app-progress-circle> -->
+                    <p class="text-3xl text-blue-400">2.0</p>
+                    <p class="text-xl">m/s</p>
+                  </div>
+                </div>
+
+                <div
+                  class="bg-[#1e1e1e] card h-[20vh] w-auto rounded-3xl px-3 flex flex-col items-start"
+                >
+                  <h3 class="text-gray-100 text-xs font-semibold mt-2">
+                    Wind Peak Speed
+                  </h3>
+                  <div
+                    class="w-full h-full flex flex-col items-center justify-center"
+                  >
+                    <!-- <app-progress-circle></app-progress-circle> -->
+                    <!-- <app-chart-bar></app-chart-bar> -->
+                    <p class="text-3xl text-blue-400">1</p>
+                    <p class="text-xl">ms</p>
+                  </div>
+                </div>
+                <div
+                  class="bg-[#1e1e1e] card h-[20vh] w-auto rounded-3xl px-3 flex flex-col items-start"
+                >
+                  <h3 class="text-gray-100 text-xs font-semibold mt-2">
+                    Wind Direction
+                  </h3>
+                  <div class="w-full h-full flex items-center justify-center">
+                    <!-- <app-progress-circle></app-progress-circle> -->
+                    <p class="text-3xl text-blue-400">264</p>
+                  </div>
+                </div>
+                <div
+                  class="bg-[#1e1e1e] card h-[20vh] w-auto rounded-3xl px-3 flex flex-col items-start"
+                >
+                  <h3 class="text-gray-100 text-xs font-semibold mt-2">
+                    Gust Speed
+                  </h3>
+                  <div class="w-full h-full flex items-center justify-center">
+                    <!-- <app-progress-circle></app-progress-circle> -->
+                    <p class="text-3xl text-blue-400">264</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -507,6 +557,7 @@
           </div> -->
         </div>
       </div>
+      <!-- end right -->
     </div>
   </div>
 </div>
