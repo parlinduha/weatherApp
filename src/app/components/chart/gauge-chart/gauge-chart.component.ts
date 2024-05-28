@@ -42,7 +42,7 @@ export class GaugeChartComponent implements OnInit {
       cutout: '70%', // Membuat gauge chart
       plugins: {
         legend: {
-          display: false,
+          display: true,
         },
       },
     };

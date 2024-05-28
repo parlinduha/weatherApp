@@ -1,6 +1,6 @@
 <div class="flex h-screen">
   <!-- Sidebar -->
-  <app-sidebar></app-sidebar>
+  <!-- <app-sidebar></app-sidebar> -->
   <!-- end sidebar -->
   <!-- Content -->
   <div class="flex-1 p-4">
@@ -9,7 +9,7 @@
         <div class="grid grid-cols-1 gap-2">
           <div class="bg-[#1e1e1e] rounded-2xl p-5 h-96">
             <div class="flex justify-between items-center">
-              <div
+              <!-- <div
                 class="flex rounded-full px-2 justify-center items-center bg-[#d8e9f9]"
               >
                 <ion-icon
@@ -19,7 +19,8 @@
                 <h2 class="text-black text-xs">
                   {{ latitude }}, {{ longitude }}
                 </h2>
-              </div>
+              </div> -->
+              <div></div>
               <div class="flex flex-col items-end">
                 <label
                   class="flex items-center relative w-max cursor-pointer select-none"
@@ -83,7 +84,7 @@
           <!-- ... -->
           <div class="bg-[#1e1e1e] rounded-3xl p-3 h-[40vh]">
             <div>
-              <h5 class="text-white">Today / Week</h5>
+              <!-- <h5 class="text-white">Today / Week</h5> -->
             </div>
             <div class="flex gap-5">
               <div class="w-2/3">
@@ -179,7 +180,7 @@
                       <span class="text-sm text-[#767676]">Thunder Storm</span>
                     </div>
                     <h5 class="text-4xl">14°</h5>
-                    <app-storm-chart class="ml-2"></app-storm-chart>
+                    <!-- <app-storm-chart class="ml-2"></app-storm-chart> -->
                   </div>
                   <div
                     class="flex overflow-visible items-center justify-center"
@@ -224,16 +225,14 @@
         </div>
       </div>
       <div class="grow w-[30%]">
-        <div class="grid grid-rows-1 flex-auto">
-          <div
-            class="bg-gradient-to-r from-[#213237] to-[#233d45] rounded-2xl p-4"
-          >
-            <h5 class="text-white mb-3">Today Highlight</h5>
-            <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-rows-1 flex-auto h-full">
+          <div class="rounded-2xl p-1">
+            <!-- <h5 class="text-white mb-3">Today Highlight</h5> -->
+            <div class="grid grid-cols-1 gap-4">
               <div
-                class="bg-[#1e1e1e] card h-[20vh] w-auto rounded-3xl px-3 py-2"
+                class="bg-[#1e1e1e] card h-[25vh] w-auto rounded-3xl px-3 py-2"
               >
-                <h3 class="text-gray-100 text-xs font-semibold">
+                <h3 class="text-gray-100 text-xl font-semibold">
                   Chance of Rain
                 </h3>
                 <div class="w-full">
@@ -244,15 +243,15 @@
               <div
                 class="bg-[#1e1e1e] card h-[20vh] w-auto rounded-3xl px-3 flex flex-col items-start"
               >
-                <h3 class="text-gray-100 text-xs font-semibold mt-2">
+                <h3 class="text-gray-100 text-xl font-semibold mt-2">
                   UV Index
                 </h3>
-                <div class="w-full">
+                <div class="w-full h-full">
                   <app-progress-circle></app-progress-circle>
                 </div>
               </div>
 
-              <div
+              <!-- <div
                 class="bg-[#1e1e1e] h-[20vh] card w-auto rounded-3xl px-3 py-2 flex max-w-xs flex-col items-start"
               >
                 <div class="flex gap-2">
@@ -278,39 +277,39 @@
                     <span class="text-xs text-slate-500">PM</span>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               <div
-                class="bg-[#1e1e1e] card rounded-3xl px-3 py-2 h-[20vh] w-auto flex flex-col"
+                class="bg-[#1e1e1e] card rounded-3xl px-3 py-2 h-[35vh] w-auto flex flex-col"
               >
                 <div class="flex">
-                  <ion-icon name="water-sharp"></ion-icon>
-                  <h3 class="text-gray-100 text-xs font-semibold">Humidity</h3>
+                  <!-- <ion-icon name="water-sharp"></ion-icon> -->
+                  <h3 class="text-gray-100 text-xl font-semibold">Humidity</h3>
                 </div>
-                <div class="w-full">
-                  <div class="w-full h-full">
-                    <img
-                      src="assets/images/humadity.png"
-                      class="w-[200px] h-[80px] items-center"
-                      alt=""
-                      srcset=""
-                    />
-                  </div>
+                <div
+                  class="grid items-center justify-center justify-items-center"
+                >
+                  <img
+                    src="assets/images/humadity.png"
+                    class="h-40 items-center"
+                    alt=""
+                    srcset=""
+                  />
                 </div>
-                <div class="flex grid-cols-1 justify-between">
+                <div class="flex flex-cols-1 justify-between mt[-100px]">
                   <div class="flex items-center gap-1">
                     <p class="text-gray-100 text-md">{{ humidity }}</p>
                   </div>
                   <div class="text-gray-100">
-                    <p class="text-[#2d748b] text-xs">Status</p>
-                    <p class="text-xs">Good Quality</p>
+                    <p class="text-[#2d748b] text-xl">Status</p>
+                    <p class="text-xl">Good Quality</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="rounded-2xl mt-5">
+          <!-- <div class="rounded-2xl mt-5">
             <div class="flex justify-between items-center text-white">
               <div class="text-lg">Other Cities</div>
               <div
@@ -378,7 +377,134 @@
                 <h3 class="text-lg font-normal text-white">Montreal, Canada</h3>
               </div>
             </div>
+          </div> -->
+        </div>
+      </div>
+      <div class="grow w-[30%]">
+        <div class="grid grid-rows-1 flex-auto h-full">
+          <div class="rounded-2xl p-2">
+            <div class="grid grid-cols-1 gap-4">
+              <div
+                class="bg-[#1e1e1e] card h-[25vh] w-auto rounded-3xl px-3 py-2"
+              >
+                <h3 class="text-gray-100 text-xl font-semibold">
+                  Chance of Rain
+                </h3>
+                <div class="w-full">
+                  <app-gauge-chart></app-gauge-chart>
+                </div>
+              </div>
+
+              <div
+                class="bg-[#1e1e1e] card h-[20vh] w-auto rounded-3xl px-3 flex flex-col items-start"
+              >
+                <h3 class="text-gray-100 text-xl font-semibold mt-2">
+                  UV Index
+                </h3>
+                <div class="w-full h-full">
+                  <app-progress-circle></app-progress-circle>
+                </div>
+              </div>
+
+              <div
+                class="bg-[#1e1e1e] h-[20vh] card w-auto rounded-3xl px-3 py-2 flex max-w-xs flex-col items-start"
+              >
+                <div class="flex gap-2">
+                  <img
+                    src="assets/weather-icon/wind.png"
+                    alt=""
+                    srcset=""
+                    class="w-[20px] h-[20px]"
+                  />
+                  <h3 class="text-gray-100 text-xs font-semibold">
+                    Wind Status
+                  </h3>
+                </div>
+                <div class="w-full">
+                  <app-chart-bar></app-chart-bar>
+                </div>
+                <div class="flex w-full justify-between gap-2">
+                  <div class="flex gap-2 items-center">
+                    <p class="text-gray-100">{{ wind }}</p>
+                  </div>
+                  <div class="flex gap-2 items-center">
+                    <p class="text-gray-100">4:00</p>
+                    <span class="text-xs text-slate-500">PM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <!-- <div class="rounded-2xl mt-5">
+            <div class="flex justify-between items-center text-white">
+              <div class="text-lg">Other Cities</div>
+              <div
+                (click)="showLink()"
+                class="bg-[#2e2e2e] rounded-full p-2 items-center text-xs antialiased hover:bg-gray-400 cursor-pointer"
+              >
+                Show All
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 mt-2">
+              <div class="bg-[#2e2e2e] p-4 rounded-xl">
+                <div class="flex gap-3 items-center">
+                  <h5 class="font-bold text-4xl">25°</h5>
+                  <p class="text-gray-400 text-xs">14° H:29° L:24°</p>
+                </div>
+                <div class="flex justify-end">
+                  <img
+                    src="assets/weather-icon/wind-2.png"
+                    class="w-[20px] h-[20px] items-center"
+                    alt=""
+                  />
+                </div>
+                <h3 class="text-lg font-normal text-white">Pakistan</h3>
+              </div>
+              <div class="bg-[#2e2e2e] p-4 rounded-xl">
+                <div class="flex gap-3 items-center">
+                  <h5 class="font-bold text-4xl">25°</h5>
+                  <p class="text-gray-400 text-xs">27° H:25° L:16°</p>
+                </div>
+                <div class="flex justify-end">
+                  <img
+                    src="assets/weather-icon/cloudy-5.png"
+                    class="w-[20px] h-[20px] items-center"
+                    alt=""
+                  />
+                </div>
+                <h3 class="text-lg font-normal text-white">Dubai - UAE</h3>
+              </div>
+              <div class="bg-[#2e2e2e] p-4 rounded-xl">
+                <div class="flex gap-3 items-center">
+                  <h5 class="font-bold text-4xl">25°</h5>
+                  <p class="text-gray-400 text-xs">16° N/A</p>
+                </div>
+                <div class="flex justify-end">
+                  <img
+                    src="assets/weather-icon/cloudy-4.png"
+                    class="w-[20px] h-[20px] items-center"
+                    alt=""
+                  />
+                </div>
+                <h3 class="text-lg font-normal text-white">China Nuevo</h3>
+              </div>
+              <div class="bg-[#2e2e2e] p-4 rounded-xl">
+                <div class="flex gap-3 items-center">
+                  <h5 class="font-bold text-4xl">25°</h5>
+                  <p class="text-gray-400 text-xs">N/A N/A</p>
+                </div>
+                <div class="flex justify-end">
+                  <img
+                    src="assets/weather-icon/cloudy-6.png"
+                    class="w-[20px] h-[20px] items-center"
+                    alt=""
+                  />
+                </div>
+                <h3 class="text-lg font-normal text-white">Montreal, Canada</h3>
+              </div>
+            </div>
+          </div> -->
         </div>
       </div>
     </div>

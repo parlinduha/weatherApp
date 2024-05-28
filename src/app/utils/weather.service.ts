@@ -6,7 +6,7 @@ import { catchError, Observable, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class WeatherService {
-  api_url = 'http://127.0.0.1:8000/api/sensor/live/fetch';
+  api_url = 'http://172.15.1.152:80/api/sensor/live/fetch';
 
   constructor(private http: HttpClient) {}
 

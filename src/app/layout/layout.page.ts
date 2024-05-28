@@ -1,4 +1,4 @@
-import { Component  , OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
 import { Router } from '@angular/router';
 import { WeatherService } from '../utils/weather.service';
@@ -60,6 +60,7 @@ export class LayoutPage implements OnInit {
         );
         if (humidityData) {
           this.humidity = humidityData.value;
+          console.log('Humidity data', this.humidity);
         }
         // Find additional data
         const windData = this.data.find((item) => item.name === 'Wind Speed');
