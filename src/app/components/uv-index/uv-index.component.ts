@@ -11,7 +11,7 @@ export class UvIndexComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit() {
-    this.updateUVDisplay(11); // Ganti dengan nilai UV Index yang sesuai
+    this.updateUVDisplay(9); // Ganti dengan nilai UV Index yang sesuai
   }
 
   updateUVDisplay(index: number) {
@@ -44,7 +44,7 @@ export class UvIndexComponent implements OnInit, AfterViewInit {
       uvValueElement.textContent = index.toString();
     }
     if (uvLabelElement) {
-      uvLabelElement.textContent = `Label: ${label}`;
+      uvLabelElement.textContent = `${label}`;
     }
     if (uvIndicator) {
       uvIndicator.style.backgroundColor = color;

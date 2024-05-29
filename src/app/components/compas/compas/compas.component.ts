@@ -63,7 +63,7 @@ export class CompasComponent implements OnInit {
         this.direction = this.directions[index];
         this.arrowDirection = this.rotationClasses[index];
         this.arrowRotation = parsedDegrees; // Update rotation degree
-        this.arrowScale = Math.abs(Math.sin(parsedDegrees * (Math.PI / 180)));
+        this.arrowScale = Math.abs(Math.sin(parsedDegrees * (Math.PI / 360)));
       }
     }
   }

@@ -21,14 +21,22 @@ interface WeatherData {
 })
 export class LayoutPage implements OnInit {
   temperatureUnit = 'C';
-  data: WeatherData[] = [];
+  dataWeather: WeatherData[] = [];
+  dataWh25: any[] = [];
   feelsLike: string = '';
   currentDate: string = '';
   currentDay: string = '';
   humidity: string = '';
   dewPointValue: string = '';
   dewPointUnit: string = '';
+  pressure: string = '';
+  pressureInhumi: string = '';
+  pressureIntemp: string = '';
+  pressureUnit: string = '';
   wind: string = '';
+  windPeakSpeed: string = '';
+  solarIrradiance: string = '';
+  gustSpeed: string = '';
   rain: string = '';
   uv: string = '';
   latitude: string = '';
@@ -46,25 +54,35 @@ export class LayoutPage implements OnInit {
     this.weatherService.service_get_data_live().subscribe(
       (response: any) => {
         localStorage.setItem('response', JSON.stringify(response));
-        this.data = response.data.weather;
-        console.log('ini data weather', this.data);
+        this.dataWeather = response.data.weather;
+        this.dataWh25 = response.data.wh25;
+        console.log('ini data wh25', this.dataWh25);
 
         // Find the "Feels Like" data
-        const feelsLikeData = this.data.find(
+        const feelsLikeData = this.dataWeather.find(
           (item) => item.name === 'Feels Like'
         );
         if (feelsLikeData) {
           this.feelsLike = feelsLikeData.value;
         }
         // Find additional data
-        const humidityData = this.data.find(
+        const humidityData = this.dataWeather.find(
           (item) => item.name === 'Outdoor Humidity'
         );
         if (humidityData) {
           this.humidity = humidityData.value;
           console.log('Humidity data', this.humidity);
         }
-        const dewPointData = this.data.find(
+        const firstWh25Data = this.dataWh25[0];
+        if (firstWh25Data) {
+          this.pressure = firstWh25Data.abs;
+          this.pressureInhumi = firstWh25Data.inhumi;
+          this.pressureIntemp = firstWh25Data.intemp;
+          this.pressureUnit = firstWh25Data.unit;
+          console.log('Pressure data', this.pressure);
+        }
+
+        const dewPointData = this.dataWeather.find(
           (item) => item.name === 'Dew Point'
         );
         if (dewPointData) {
@@ -73,9 +91,35 @@ export class LayoutPage implements OnInit {
           console.log('Humidity data', this.humidity);
         }
         // Find additional data
-        const windData = this.data.find((item) => item.name === 'Wind Speed');
+        const windData = this.dataWeather.find(
+          (item) => item.name === 'Wind Speed'
+        );
         if (windData) {
           this.wind = windData.value;
+        }
+
+        // wind speak data
+        const windSpeakData = this.dataWeather.find(
+          (item) => item.name === 'Day Wind Max'
+        );
+        if (windSpeakData) {
+          this.windPeakSpeed = windSpeakData.value;
+        }
+
+        // solar irradiance data
+        const solarIrradianceData = this.dataWeather.find(
+          (item) => item.name === 'Solar Irradiance'
+        );
+        if (solarIrradianceData) {
+          this.solarIrradiance = solarIrradianceData.value;
+        }
+
+        // gust speed data
+        const gustSpeedData = this.dataWeather.find(
+          (item) => item.name === 'Gust Speed'
+        );
+        if (gustSpeedData) {
+          this.gustSpeed = gustSpeedData.value;
         }
 
         // Set UV Index value
