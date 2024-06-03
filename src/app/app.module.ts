@@ -19,7 +19,6 @@ import { environment } from 'src/environments/environment';
     IonicModule.forRoot(),
     AppRoutingModule,
     FormsModule,
-    SharedModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       // enabled: !isDevMode(),

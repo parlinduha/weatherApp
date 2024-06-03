@@ -1,0 +1,56 @@
+<div class="h-screen w-screen">
+  <div class="container-fluid mx-auto p-4 md:p-8 h-full" style="padding: 24px">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-5 h-full">
+      <!-- Kolom Pertama (30%) -->
+      <div class="col-span-2 grid grid-rows-4 gap-5 h-full">
+        <div
+          id="power"
+          class="h-full grid rounded-[14px] justify-center items-center p-5 relative"
+        >
+          <app-power></app-power>
+        </div>
+
+        <div id="dewPoint" class="h-full row-span-2 rounded-[14px]">
+          <app-dew-point></app-dew-point>
+        </div>
+        <div id="uv" class="h-full rounded-[14px]">
+          <app-uv-index></app-uv-index>
+        </div>
+      </div>
+      <!-- Kolom Kedua (60%) -->
+      <div class="col-span-8 grid grid-rows-6 gap-5 h-full">
+        <div class="grid grid-rows-1 gap-5 w-full h-full row-span-1">
+          <div
+            id="nav-ombro"
+            class="flex h-full xs:bg-contain justify-center p-4 items-center"
+          ></div>
+        </div>
+        <div id="temp" class="h-full row-span-3 p-3 rounded-[14px]">
+          <app-temperature></app-temperature>
+        </div>
+        <div
+          class="grid grid-cols-2 gap-5 h-full justify-center items-center row-span-auto rounded-[14px]"
+        >
+          <div id="humidity" class="h-full rounded-[14px]">
+            <app-humidity></app-humidity>
+          </div>
+          <div id="humidity" class="h-full rounded-[14px]">
+            <app-solar-irradiance></app-solar-irradiance>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-5 h-full row-span-5 rounded-[14px]">
+          <div id="rainRate" class="h-full rounded-[14px]">
+            <app-rain-rate></app-rain-rate>
+          </div>
+          <div id="rainRate" class="h-full rounded-[14px]">
+            <app-rain-event></app-rain-event>
+          </div>
+        </div>
+      </div>
+      <!-- Kolom Ketiga (30%) -->
+      <div id="pressure" class="col-span-2 h-full rounded-[14px]">
+        <app-pressure></app-pressure>
+      </div>
+    </div>
+  </div>
+</div>

@@ -21,12 +21,10 @@ import { ProgressCircleComponent } from '../components/chart/progress-circle/pro
     FormsModule,
     IonicModule,
     LayoutPageRoutingModule,
-    SharedModule,
   ],
   declarations: [
     LayoutPage,
     LineComponent,
-    ChartBarComponent,
     GaugeChartComponent,
     WindChartComponent,
     StormChartComponent,

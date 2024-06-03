@@ -11,7 +11,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'layout',
     pathMatch: 'full',
+  },  {
+    path: 'template',
+    loadChildren: () => import('./template/template.module').then( m => m.TemplatePageModule)
   },
+
 ];
 
 @NgModule({
