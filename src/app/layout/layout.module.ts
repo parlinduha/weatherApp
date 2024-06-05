@@ -25,7 +25,7 @@ import { ProgressCircleComponent } from '../components/chart/progress-circle/pro
   declarations: [
     LayoutPage,
     LineComponent,
-    GaugeChartComponent,
+    // GaugeChartComponent,
     WindChartComponent,
     StormChartComponent,
     ProgressCircleComponent,

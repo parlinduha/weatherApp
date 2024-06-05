@@ -1,8 +1,21 @@
-<div class="flex items-center">
-  <img
-    src="assets/images/icons/uv-icon.svg"
-    class="w-20 h-20 md:w-10 md:h-10"
-    alt=""
-  />
-  <div class="font-semibold text-lg">UV Index</div>
+<div class="flex flex-col h-full justify-center items-center">
+  <div class="flex items-center">
+    <img
+      src="assets/images/icons/uv-icon.svg"
+      class="w-20 h-20 md:w-10 md:h-10"
+      alt=""
+    />
+    <div class="font-semibold text-lg">UV Index</div>
+  </div>
+  <div class="w-full h-full justify-center items-center flex">
+    <div class="progress" >
+      <div class="barOverflow flex justify-center items-center">
+        <div class="bar " [style.transform]="getGaugeTransform()"></div>
+        <div class="grid grid-rows-1 -mt-5">
+          <span class=" text-2xl mt-2 font-medium">{{ dataValue }}</span>
+          <span>Very High</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

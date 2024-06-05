@@ -1,0 +1,29 @@
+.progress {
+  position: relative;
+  /* Removed unnecessary properties for responsiveness: display: flex, margin, float */
+  width: fit-content; /* Adapts width to content */
+  text-align: center;
+}
+
+.barOverflow {
+  position: relative;
+  width: 145px; /* Adjust for desired aspect ratio */
+  height: 90px; /* Adjust for desired aspect ratio */
+  margin-bottom: 4px; /* Adjust margin if needed */
+  overflow: hidden;
+  /* Removed background-color for clarity */
+}
+
+.bar {
+  position: absolute;
+  top: 0;
+  // left: calc(50% - 65px); /* Center horizontally within .barOverflow */
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 10px solid #ccc;
+  border-bottom-color: #0bf;
+  border-right-color: #0bf;
+  // transform: rotate(180);
+}
