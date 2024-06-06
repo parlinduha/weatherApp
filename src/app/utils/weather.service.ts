@@ -6,7 +6,8 @@ import { catchError, Observable, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class WeatherService {
-  api_url = 'http://172.15.1.152:80/api/sensor/live/fetch';
+  // api_url = 'http://172.15.2.170:80/api/get-ombrometer';
+  api_url = 'http://172.15.2.170:80/api/sensor/data/weather';
 
   constructor(private http: HttpClient) {}
 
@@ -17,6 +18,7 @@ export class WeatherService {
       }),
     };
 
+    // Return the Observable without subscribing
     return this.http.get(this.api_url, httpOptions).pipe(
       catchError((error) => {
         return throwError(error);

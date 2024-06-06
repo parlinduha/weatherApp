@@ -1,19 +1,27 @@
-<div class="flex flex-col h-full justify-center items-center">
-  <div class="flex items-center">
-    <img
-      src="assets/images/icons/uv-icon.svg"
-      class="w-20 h-20 md:w-10 md:h-10"
-      alt=""
-    />
-    <div class="font-semibold text-lg">UV Index</div>
+<div class="flex flex-col h-full pt-1">
+  <div class="flex items-center gap-2 pl-1">
+    <img src="assets/images/icons/uv-icon.svg" class="md:w-8 md:h-8" alt="" />
+    <div class="font-bold text-sm">UV Index</div>
   </div>
   <div class="w-full h-full justify-center items-center flex">
-    <div class="progress" >
+    <div class="progress">
       <div class="barOverflow flex justify-center items-center">
-        <div class="bar " [style.transform]="getGaugeTransform()"></div>
-        <div class="grid grid-rows-1 -mt-5">
-          <span class=" text-2xl mt-2 font-medium">{{ dataValue }}</span>
-          <span>Very High</span>
+        <div class="bar" [style.transform]="getGaugeTransform()"></div>
+        <div class="grid grid-rows-1">
+          <span class="text-3xl mt-[1.5rem] font-medium font-gradient">{{
+            dataValue
+          }}</span>
+          <!-- <span class="text-xs font-semibold">{{ getUvIndexCategory() }}</span> -->
+          <ng-container *ngIf="errorMessage; else uvIndexCategory">
+            <span class="text-xs font-semibold text-red-500">{{
+              errorMessage
+            }}</span>
+          </ng-container>
+          <ng-template #uvIndexCategory>
+            <span class="text-xs font-semibold">{{
+              getUvIndexCategory()
+            }}</span>
+          </ng-template>
         </div>
       </div>
     </div>

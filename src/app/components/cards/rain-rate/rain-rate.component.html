@@ -1,13 +1,16 @@
 <div class="p-4 h-full">
   <div class="flex">
-    <div>Rain Rate</div>
+    <div class="font-bold text-sm">Rain Rate</div>
   </div>
   <div class="grid grid-cols-2 h-full items-center">
-    <div class="font-medium text-3xl">0.90 mm/Hr</div>
-    <div class="ml-12">
+    <div class="grid grid-cols-1">
+      <span class="font-medium text-4xl font-gradient">{{ dataValue }}</span>
+      <span class="ml-1">{{ dataUnit }}</span>
+    </div>
+    <div class="ml-12 w-28 ">
       <img
         src="assets/images/icons/rainRate-icon.svg"
-        class="h-20 w-32"
+        class="absolute -ml-[50px] -mt-[80px]"
         alt=""
       />
     </div>

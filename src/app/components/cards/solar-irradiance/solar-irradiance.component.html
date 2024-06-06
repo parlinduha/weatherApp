@@ -1,7 +1,16 @@
 <div class="grid grid-cols-3 items-center h-full justify-items-start">
   <div class="h-full grid justify-center items-center">
-    <img src="assets/images/icons/solar-irradiance.svg" class="absolute h-16 " alt="" />
+    <img
+      src="assets/images/icons/solar-irradiance.svg"
+      class="absolute h-16"
+      alt=""
+    />
   </div>
-  <div class="-ml-[10px]">Solar Irradiance</div>
-  <div class="font-medium text-4xl">40%</div>
+  <div class="-ml-[45px] font-bold text-sm">Solar Irradiance</div>
+  <div class="flex gap-1 items-end -ml-4">
+    <span class="font-medium text-3xl font-gradient">{{ dataValue }} </span>
+    <span class="text-xs font-medium text-center font-gradient">{{
+      dataUnit
+    }}</span>
+  </div>
 </div>
