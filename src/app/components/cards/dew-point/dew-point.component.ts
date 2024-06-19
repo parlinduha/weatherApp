@@ -42,7 +42,7 @@ export class DewPointComponent implements OnInit {
         const rainSensor = parsedData.sensor.find(
           (sensor: Sensor) => sensor.title === 'Rainfall'
         );
-        console.log('object is rain', JSON.stringify(rainSensor));
+        // console.log('object is rain', JSON.stringify(rainSensor));
         if (rainSensor) {
           const rangeMatch = rainSensor.range?.match(
             /(\d+\.?\d*)\s*(mm)\s*to\s*(\d+\.?\d*)/

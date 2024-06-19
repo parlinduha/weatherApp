@@ -51,14 +51,14 @@ export class UvIndexComponent implements OnInit {
       const localStorageData = JSON.parse(
         localStorage.getItem('ombrometer') || '{}'
       ) as WindDirectionData;
-      console.log('localStorageData', JSON.stringify(localStorageData));
+      // console.log('localStorageData', JSON.stringify(localStorageData));
 
       const uvSensor = localStorageData.sensor.find(
         (sensor: Sensor) => sensor.title === 'Solar'
       );
       if (uvSensor) {
         const uvIndexData = uvSensor.list.find((list) => list[0] === 'UVI');
-        console.log("object: " + uvIndexData);
+        // console.log("object: " + uvIndexData);
         if (uvIndexData) {
           this.dataValue = parseFloat(uvIndexData[1]);
         }

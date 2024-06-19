@@ -43,12 +43,12 @@ export class TemperatureComponent implements OnInit {
         const windSensor = parsedData.sensor.find(
           (sensor: Sensor) => sensor.title === 'Outdoor'
         );
-        console.log('object temperature', JSON.stringify(windSensor));
+        // console.log('object temperature', JSON.stringify(windSensor));
         if (windSensor) {
           const windSpeedData = windSensor.list.find(
             (item: [string, string, string]) => item[0] === 'Temperature'
           );
-          console.log('temp: ' + windSpeedData);
+          // console.log('temp: ' + windSpeedData);
           if (windSpeedData) {
             let temperature = parseFloat(windSpeedData[1]);
             let unit = windSpeedData[2];
