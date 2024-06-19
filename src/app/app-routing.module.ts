@@ -3,19 +3,19 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'layout',
-    loadChildren: () =>
-      import('./layout/layout.module').then((m) => m.LayoutPageModule),
-  },
-  {
     path: '',
-    redirectTo: 'template',
+    redirectTo: 'template', // Rute default diarahkan ke 'template'
     pathMatch: 'full',
   },
   {
     path: 'template',
     loadChildren: () =>
       import('./template/template.module').then((m) => m.TemplatePageModule),
+  },
+  {
+    path: 'layout',
+    loadChildren: () =>
+      import('./layout/layout.module').then((m) => m.LayoutPageModule),
   },
 ];
 

@@ -1,5 +1,7 @@
-<div class="grid grid-cols-3 h-full items-center justify-items-start">
+<div class="grid grid-cols-3 h-full items-center ">
   <div class=""><img src="assets/images/icons/humadity-icon.svg" alt="" /></div>
   <div class="font-bold text-sm">Humidity</div>
-  <div class="font-medium text-4xl font-gradient">{{ dataValue }}</div>
+  <div class="font-medium text-4xl font-gradient">
+    {{ getHumidityDisplay() }} <span class="text-xs">%</span>
+  </div>
 </div>

@@ -6,8 +6,7 @@ import { catchError, Observable, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class WeatherService {
-  // api_url = 'http://172.15.2.170:80/api/get-ombrometer';
-  api_url = 'http://172.15.2.170:80/api/sensor/data/weather';
+  api_url = 'http://localhost:8100/client?command=record';
 
   constructor(private http: HttpClient) {}
 

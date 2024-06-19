@@ -1,10 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherService } from 'src/app/utils/weather.service';
 
-interface CommonListItem {
-  id: string;
-  val: string;
-  unit: string;
-  name: string;
+interface Sensor {
+  title: string;
+  list: [string, string, string][];
+}
+
+interface WindDirectionData {
+  sensor: Sensor[];
+  battery: {
+    title: string;
+    list: string[];
+  };
 }
 @Component({
   selector: 'app-humidity',
@@ -12,30 +19,35 @@ interface CommonListItem {
   styleUrls: ['./humidity.component.scss'],
 })
 export class HumidityComponent implements OnInit {
-  dataValue: string = '';
-  errorMessage: string = '';
-  constructor() {}
+  humidity: number | null = null;
+  constructor(private weatherService: WeatherService) {}
 
   ngOnInit() {
-    this.get_humidity();
+    this.getHumidity();
   }
 
-  get_humidity() {
-    try {
-      const localStorageData = JSON.parse(
-        localStorage.getItem('ombrometer') || '{}'
-      );
-      if (localStorageData.common_list) {
-        const data = localStorageData.common_list.find(
-          (item: CommonListItem) => item.id == '0x07'
+  getHumidity() {
+    // const localStorageData = localStorage.getItem('anemometer');
+    this.weatherService.service_get_data_live().subscribe((data) => {
+      const parsedData: WindDirectionData = data;
+      // console.log('object is', parsedData);
+
+      if (parsedData &&  parsedData.sensor) {
+        const windSensor = parsedData.sensor.find(
+          (sensor: Sensor) => sensor.title === 'Outdoor'
         );
-        // console.log('object found', data);
-        if (data) {
-          this.dataValue = data.val;
+        if (windSensor) {
+          const windSpeedData = windSensor.list.find(
+            (item: [string, string, string]) => item[0] === 'Humidity'
+          );
+          if (windSpeedData) {
+            this.humidity = parseFloat(windSpeedData[1]);
+          }
         }
-      } else {
-        this.errorMessage = 'No data available';
       }
-    } catch (error) {}
+    });
+  }
+  getHumidityDisplay(): string {
+    return this.humidity !== null ? this.humidity.toString() : '--/--';
   }
 }

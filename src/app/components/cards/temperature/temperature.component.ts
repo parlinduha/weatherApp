@@ -1,11 +1,20 @@
+import { JsonpInterceptor } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { WeatherService } from 'src/app/utils/weather.service';
 
-interface CommonListItem {
-  id: string;
-  val: string;
-  unit: string;
-  name: string;
+interface Sensor {
+  title: string;
+  list: [string, string, string][];
 }
+
+interface WindDirectionData {
+  sensor: Sensor[];
+  battery: {
+    title: string;
+    list: string[];
+  };
+}
+
 @Component({
   selector: 'app-temperature',
   templateUrl: './temperature.component.html',
@@ -17,64 +26,42 @@ export class TemperatureComponent implements OnInit {
   tempValue: number = 0;
   tempUnit: string = '';
   errorMessage: string = '';
-  constructor() {}
+  temperature: number | null = null;
+  unit: string = '';
+
+  constructor(private weatherService: WeatherService) {}
 
   ngOnInit() {
-    this.getFeels();
-    this.outdoor_temperature();
+    this.getTemperature();
   }
 
-  getFeels() {
-    try {
-      const localStorageData = JSON.parse(
-        localStorage.getItem('ombrometer') || '{}'
-      );
-      // console.log('local storage: ' + JSON.stringify(localStorageData));
-      if (localStorageData.common_list) {
-        // Use the explicitly typed 'item' parameter
-        const feelsLikeData = localStorageData.common_list.find(
-          (item: CommonListItem) => item.id === '3' // Change this line to check for the id
+  getTemperature() {
+    const localStorageData = localStorage.getItem('ombrometer');
+    if (localStorageData) {
+      const parsedData: WindDirectionData = JSON.parse(localStorageData);
+      if (parsedData &&  parsedData.sensor) {
+        const windSensor = parsedData.sensor.find(
+          (sensor: Sensor) => sensor.title === 'Outdoor'
         );
-        // console.log('object feelsLikeData: ' + JSON.stringify(feelsLikeData));
-        if (feelsLikeData && feelsLikeData.val) {
-          this.dataValue = parseFloat(feelsLikeData.val);
-          this.dataUnit = feelsLikeData.unit;
-          // console.log(
-          //   'data value feels like: ' + JSON.stringify(this.dataValue)
-          // );
+        console.log('object temperature', JSON.stringify(windSensor));
+        if (windSensor) {
+          const windSpeedData = windSensor.list.find(
+            (item: [string, string, string]) => item[0] === 'Temperature'
+          );
+          console.log('temp: ' + windSpeedData);
+          if (windSpeedData) {
+            let temperature = parseFloat(windSpeedData[1]);
+            let unit = windSpeedData[2];
+
+            this.temperature = temperature;
+            this.unit = unit;
+          }
         }
       }
-    } catch (error) {
-      console.log(error);
     }
   }
-  outdoor_temperature() {
-    try {
-      const localStorageData = JSON.parse(
-        localStorage.getItem('ombrometer') || '{}'
-      );
-      // console.log('local storage: ' + JSON.stringify(localStorageData));
-      if (localStorageData.common_list) {
-        // Use the explicitly typed 'item' parameter
-        const temperatureData = localStorageData.common_list.find(
-          (item: CommonListItem) => item.id === '0x02' // Change this line to check for the id
-        );
-        // console.log('object temperature: ' + JSON.stringify(temperatureData));
-        if (temperatureData && temperatureData.val) {
-          this.tempValue = parseFloat(temperatureData.val);
-          this.tempUnit = temperatureData.unit;
-          // console.log(
-          //   'data value feels like: ' + JSON.stringify(this.dataValue)
-          // );
-        } else {
-          this.errorMessage = 'No data available';
-        }
-      } else {
-        this.errorMessage = 'No data available';
-      }
-    } catch (error) {
-      console.log(error);
-      this.errorMessage = 'No data available';
-    }
+
+  getTemperatureDisplay(): string {
+    return this.temperature !== null ? this.temperature.toString() : '--/--';
   }
 }

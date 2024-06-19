@@ -2,11 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherService } from 'src/app/utils/weather.service';
 
 // Define the CommonListItem interface
-interface CommonListItem {
-  id: string;
-  val: string;
-  unit: string;
-  name: string;
+interface Sensor {
+  title: string;
+  list: [string, string, string][];
+  range?: string;
+}
+
+interface WindDirectionData {
+  sensor: Sensor[];
+  battery: {
+    title: string;
+    list: string[];
+  };
 }
 
 @Component({
@@ -43,26 +50,27 @@ export class UvIndexComponent implements OnInit {
     try {
       const localStorageData = JSON.parse(
         localStorage.getItem('ombrometer') || '{}'
+      ) as WindDirectionData;
+      console.log('localStorageData', JSON.stringify(localStorageData));
+
+      const uvSensor = localStorageData.sensor.find(
+        (sensor: Sensor) => sensor.title === 'Solar'
       );
-      // console.log('local storage: ' + JSON.stringify(localStorageData));
-      if (localStorageData.common_list) {
-        // Use the explicitly typed 'item' parameter
-        const uvIndexData = localStorageData.common_list.find(
-          (item: CommonListItem) => item.id === '0x17' // Change this line to check for the id
-        );
-        // console.log('object UV Index: ' + JSON.stringify(uvIndexData));
-        if (uvIndexData && uvIndexData.val) {
-          this.dataValue = parseFloat(uvIndexData.val);
-          // console.log(
-          //   'object UV Index data value: ' + JSON.stringify(this.dataValue)
-          // );
+      if (uvSensor) {
+        const uvIndexData = uvSensor.list.find((list) => list[0] === 'UVI');
+        console.log("object: " + uvIndexData);
+        if (uvIndexData) {
+          this.dataValue = parseFloat(uvIndexData[1]);
         }
+      } else {
+        this.errorMessage = "Can't find UVI data";
       }
     } catch (error) {
       console.error(error);
-      this.errorMessage = '--/--';
+      this.errorMessage = 'Error getting data from local storage';
     }
   }
+
   getUvIndexCategory(): string {
     if (this.dataValue >= 0 && this.dataValue <= 2) {
       return 'Low ';
