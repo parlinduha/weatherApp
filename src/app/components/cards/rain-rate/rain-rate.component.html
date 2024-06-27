@@ -4,8 +4,9 @@
   </div>
   <div class="grid grid-cols-2 h-full items-center">
     <div class="grid grid-cols-1">
-      <span class="font-medium text-4xl font-gradient">{{ dataValue }}</span>
-      <span class="ml-1">{{ dataUnit }}</span>
+      <span *ngIf="dataValue && dataUnit"  class="font-medium text-4xl font-gradient">{{ dataValue }}</span>
+      <span *ngIf="dataValue && dataUnit"  class="ml-1">{{ dataUnit }}</span>
+      <span *ngIf="!(dataValue && dataUnit)" class="font-medium text-4xl font-gradient">{{ errorMessage }}</span>
     </div>
     <div class="ml-12 w-28 ">
       <img

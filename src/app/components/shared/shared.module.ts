@@ -6,7 +6,6 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { CompasComponent } from '../compas/compas/compas.component';
 import { DewPointComponent } from '../cards/dew-point/dew-point.component';
 import { HumidityComponent } from '../cards/humidity/humidity.component';
 import { PowerComponent } from '../cards/power/power.component';
@@ -21,7 +20,6 @@ import { ChartBarComponent } from '../chart/chart-bar/chart-bar.component';
   declarations: [
     NavbarComponent,
     SidebarComponent,
-    CompasComponent,
     DewPointComponent,
     HumidityComponent,
     PowerComponent,
@@ -37,7 +35,6 @@ import { ChartBarComponent } from '../chart/chart-bar/chart-bar.component';
   exports: [
     NavbarComponent,
     SidebarComponent,
-    CompasComponent,
     DewPointComponent,
     HumidityComponent,
     PowerComponent,

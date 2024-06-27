@@ -32,7 +32,7 @@ export class HumidityComponent implements OnInit {
       const parsedData: WindDirectionData = data;
       // console.log('object is', parsedData);
 
-      if (parsedData &&  parsedData.sensor) {
+      if (parsedData && parsedData.sensor) {
         const windSensor = parsedData.sensor.find(
           (sensor: Sensor) => sensor.title === 'Outdoor'
         );

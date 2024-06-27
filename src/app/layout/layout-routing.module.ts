@@ -6,8 +6,13 @@ import { LayoutPage } from './layout.page';
 const routes: Routes = [
   {
     path: '',
-    component: LayoutPage
-  }
+    component: LayoutPage,
+  },
+  {
+    path: '',
+    redirectTo: 'template', // Rute default diarahkan ke 'template'
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

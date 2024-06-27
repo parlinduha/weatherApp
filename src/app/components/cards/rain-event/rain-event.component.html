@@ -4,15 +4,15 @@
   </div>
   <div class="grid grid-cols-2 h-full items-center">
     <div class="grid grid-cols-1">
-      <span class="font-medium text-4xl font-gradient">{{ dataValue }}</span>
-      <span class="">{{ dataUnit }}</span>
+      <!-- Display dataValue and dataUnit if they are not empty -->
+      <span *ngIf="dataValue && dataUnit" class="font-medium text-4xl font-gradient">{{ dataValue }}</span>
+      <span *ngIf="dataValue && dataUnit">{{ dataUnit }}</span>
+
+      <!-- Display error message if dataValue or dataUnit is empty -->
+      <span *ngIf="!(dataValue && dataUnit)" class="font-medium text-4xl font-gradient">{{ errorMessage }}</span>
     </div>
     <div class="ml-12 w-28">
-      <img
-        src="assets/images/icons/rainEvent-icon.svg"
-        class="absolute -ml-[50px] -mt-[90px]"
-        alt=""
-      />
+      <img src="assets/images/icons/rainEvent-icon.svg" class="absolute -ml-[50px] -mt-[90px]" alt="" />
     </div>
   </div>
 </div>

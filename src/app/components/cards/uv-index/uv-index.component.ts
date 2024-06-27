@@ -24,7 +24,7 @@ interface WindDirectionData {
 export class UvIndexComponent implements OnInit {
   dataValue = 0; // Replace with actual UV index data
   maxValue = 10; // Maximum possible UV index
-  minRotation = 70; // Minimum rotation angle (in degrees)
+  minRotation = 45; // Minimum rotation angle (in degrees)
   maxRotation = 202; // Maximum rotation angle (in degrees)
   errorMessage: string = '';
 
@@ -67,7 +67,7 @@ export class UvIndexComponent implements OnInit {
       }
     } catch (error) {
       console.error(error);
-      this.errorMessage = 'Error getting data from local storage';
+      this.errorMessage = '--/--';
     }
   }
 

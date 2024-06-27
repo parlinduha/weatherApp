@@ -8,19 +8,16 @@
       <div class="barOverflow flex justify-center items-center">
         <div class="bar" [style.transform]="getGaugeTransform()"></div>
         <div class="grid grid-rows-1">
-          <span class="text-3xl mt-[1.5rem] font-medium font-gradient">{{
-            dataValue
-          }}</span>
-          <!-- <span class="text-xs font-semibold">{{ getUvIndexCategory() }}</span> -->
-          <ng-container *ngIf="errorMessage; else uvIndexCategory">
-            <span class="text-xs font-semibold text-red-500">{{
-              errorMessage
-            }}</span>
+          <ng-container *ngIf="dataValue; else noData">
+            <span class="text-3xl mt-[1.5rem] font-medium font-gradient">{{
+              dataValue
+              }}</span>
+            <span class="text-xs font-semibold">{{ getUvIndexCategory() }}</span>
           </ng-container>
-          <ng-template #uvIndexCategory>
-            <span class="text-xs font-semibold">{{
-              getUvIndexCategory()
-            }}</span>
+          <ng-template #noData>
+            <span class="text-xs font-semibold text-grey-200 mt-10">{{
+              errorMessage
+              }}</span>
           </ng-template>
         </div>
       </div>

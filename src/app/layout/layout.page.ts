@@ -48,6 +48,40 @@ export class LayoutPage implements OnInit {
     this.printCurrentPosition();
     this.setCurrentDate();
     this.getDataLive();
+    setInterval(() => {
+      this.getDataFromAPI();
+    }, 3000);
+  }
+
+  getDataFromAPI(): void {
+    this.weatherService.service_get_data_live().subscribe(
+      (response) => {
+        if (response) {
+          const oldData = localStorage.getItem('ombrometer');
+          const newData = JSON.stringify(response);
+
+          if (oldData !== newData) {
+            // Jika data baru berbeda dengan data lama, reload halaman
+            localStorage.setItem('ombrometer', newData);
+            location.reload();
+          } else {
+            // Jika data baru sama dengan data lama, tidak perlu reload
+            console.log('Data tidak berubah, tidak perlu reload.');
+            localStorage.removeItem('ombrometer');
+          }
+        } else {
+          // Jika tidak ada data response dari API, clear semua data anemometer di localStorage.
+          localStorage.removeItem('ombrometer');
+          location.reload();
+        }
+      },
+      (error) => {
+        // Tangani error dari API dan hapus data dari localStorage
+        console.error('Error fetching data from API:', error);
+        localStorage.removeItem('ombrometer');
+        location.reload();
+      }
+    );
   }
 
   getDataLive() {

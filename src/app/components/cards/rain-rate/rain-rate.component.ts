@@ -45,14 +45,14 @@ export class RainRateComponent implements OnInit {
           this.dataValue = rate[1];
           this.dataUnit = rate[2];
         } else {
-          this.errorMessage = "Can't find Rainfall Rate data";
+          this.errorMessage = "--/--";
         }
       } else {
-        this.errorMessage = "Can't find Rainfall sensor data";
+        this.errorMessage = "--/--";
       }
     } catch (error) {
       console.error(error);
-      this.errorMessage = 'Error getting data from local storage';
+      this.errorMessage = '--/--';
     }
   }
 }

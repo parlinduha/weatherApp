@@ -1,6 +1,6 @@
 {
   "/**": {
-    "target": "http://172.15.5.9",
+    "target": "http://172.15.5.67",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": false

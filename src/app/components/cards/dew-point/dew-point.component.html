@@ -1,12 +1,16 @@
 <div class="flex items-center">
-  <img
-    src="assets/images/icons/dewPoint-icon.svg"
-    class="w-20 h-20 md:w-10 md:h-10"
-    alt=""
-  />
+  <img src="assets/images/icons/dewPoint-icon.svg" class="w-20 h-20 md:w-10 md:h-10" alt="" />
   <div class="font-bold text-sm">Rain Range</div>
 </div>
-<div class="grid justify-center justify-items-center mt-10 gap-3 items-center" *ngIf="rainRange">
-  <div class="text-xl font-bold font-gradient" >{{ rainRange.low }} to {{ rainRange.max }}</div>
-  <div class="absolute mt-28">{{ rainRange.unit }}</div>
+<div class="grid justify-center justify-items-center mt-10 gap-3 items-center">
+  <ng-container *ngIf="rainRange; else noData">
+    <div class="text-xl font-bold font-gradient">
+      {{ rainRange.low }} to {{ rainRange.max }}
+    </div>
+    <div class="absolute mt-28">{{ rainRange.unit }}</div>
+  </ng-container>
+  <ng-template #noData>
+    <div class="text-xl font-bold font-gradient">--/--</div>
+    <!-- <div class="absolute mt-28">%</div> -->
+  </ng-template>
 </div>
